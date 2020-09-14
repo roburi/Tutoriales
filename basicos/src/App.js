@@ -1,16 +1,28 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useState} from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
 function App() {
 
+  const [productos, guardarProductos] = useState([
+    {id: 1, nombre:'Camisa ReactJS', precio: 50},
+    {id: 2, nombre:'Camisa Angular', precio: 40},
+    {id: 3, nombre:'Camisa Node', precio: 30},
+    {id: 4, nombre:'Camisa Java', precio: 20},
+  ]);
+
   const fecha = new Date().getFullYear();
 
   return (
     <Fragment>
-      <Header titulo='Tienda Virutal'/>
+      <Header 
+        titulo='Tienda Virutal'/>
 
-      <Footer fecha={fecha}/>
+      
+
+      <Footer 
+        fecha={fecha}/>
+
     </Fragment>
   );
 }
