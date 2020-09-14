@@ -10,8 +10,6 @@ const Producto =({producto, carrito, agregarProducto, productos}) => {
             ...carrito,
             producto
         ]);
-        
-        console.log(producto);
     }
 
     return(
