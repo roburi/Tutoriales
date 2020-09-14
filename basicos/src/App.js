@@ -12,6 +12,8 @@ function App() {
     {id: 4, nombre:'Camisa Java', precio: 20},
   ]);
 
+  const [carrito, agregarProducto] = useState([])
+
   const fecha = new Date().getFullYear();
 
   return (
@@ -25,6 +27,9 @@ function App() {
         <Producto
           key={producto.id}
           producto ={producto}
+          carrito={carrito}
+          agregarProducto={agregarProducto}
+          productos={productos}
         />
       ))}
 

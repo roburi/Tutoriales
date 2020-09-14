@@ -1,9 +1,13 @@
 import React from 'react';
 
-function Producto({producto}) {
+const Producto =({producto, carrito, agregarProducto, productos}) => {
 
-    const { nombre, precio} = producto
-    const seleccionarProdcuto = () =>{console.log('...comprando')}
+    const {nombre, precio, id} = producto;
+    //Agregar producto al carrito
+    const seleccionarProdcuto = id =>{
+        const producto = productos.filter(producto => producto.id === id);
+        console.log(producto);
+    }
 
     return(
         <div>
@@ -11,8 +15,7 @@ function Producto({producto}) {
             <p>${precio}</p>
             <button 
                 type="button"
-                id="comprar"
-                onClick={ () => seleccionarProdcuto()}
+                onClick={ () => seleccionarProdcuto(id)}
             >
                 Agregar
             </button>
