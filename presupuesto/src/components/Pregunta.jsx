@@ -1,5 +1,5 @@
 import React, {Fragment, useState} from 'react';
-
+import Error from './Error';
 
 function Pregunta() {
     //States
@@ -24,12 +24,16 @@ function Pregunta() {
         //Cuando pase la validacion
         obtenerError(false);
         
+
     };
 
     return(
         <Fragment>
             {console.log("Renderizo componente Pregunta")}
             <h2>Coloca tu presupuesto</h2>
+            
+            {error ? <Error mensaje="Presupuesto incorrecto"/> : null}
+
             <form onSubmit={agregarPresupuesto}>
                 <input
                     type="number"
