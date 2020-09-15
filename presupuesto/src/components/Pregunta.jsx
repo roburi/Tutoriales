@@ -2,8 +2,10 @@ import React, {Fragment, useState} from 'react';
 
 
 function Pregunta() {
-
+    //States
     const [cantidad, guardarCantidad] = useState(0);
+    const [error, obtenerError] = useState(false);
+
 
     const definirPresupuesto = e => {
             guardarCantidad( parseFloat(e.target.value, 10) );
@@ -14,9 +16,14 @@ function Pregunta() {
         e.preventDefault();
 
         //Validar
-
+        if(cantidad < 1 || isNaN(cantidad)){
+            obtenerError(true);
+            return;
+        }
 
         //Cuando pase la validacion
+        obtenerError(false);
+        
     };
 
     return(
