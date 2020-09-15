@@ -26,7 +26,7 @@ function App() {
     }else{
       localStorage.setItem('citas',JSON.stringify([]));
     }
-  },[citas]);
+  },[citas, citasIniciales]);
 
   // Funcion eliminar cita
   const eliminarCita = id => {
