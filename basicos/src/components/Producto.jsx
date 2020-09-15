@@ -12,16 +12,32 @@ const Producto =({producto, carrito, agregarProducto, productos}) => {
         ]);
     }
 
+    const eliminarProducto = id =>{
+        const productos = carrito.filter(producto => producto.id !== id);
+        agregarProducto(productos);
+    }
+
     return(
         <div>
             <h2>{nombre}</h2>
             <p>${precio}</p>
-            <button 
-                type="button"
-                onClick={ () => seleccionarProdcuto(id)}
-            >
-                Agregar
-            </button>
+        
+            {productos
+            ?
+                (
+                    <button 
+                        type="button"
+                        onClick={ () => seleccionarProdcuto(id)}
+                    >Agregar
+                    </button>
+                )
+            :
+                (
+                    <button type="button"
+                            onClick={() => eliminarProducto(id)}
+                    >Elminar</button>
+                )
+            }
         </div>
     );
 }

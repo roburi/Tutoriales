@@ -19,8 +19,7 @@ function App() {
 
   return (
     <Fragment>
-      <Header 
-        titulo='Tienda Virutal'/>
+      <Header titulo='Tienda Virutal'/>
 
       <h1>Lista de productos</h1>
       {/* Mandar a traer todos los productos */}
@@ -35,6 +34,7 @@ function App() {
       ))}
       <Carrito
         carrito={carrito}
+        agregarProducto={agregarProducto}
       />
       <Footer 
         fecha={fecha}/>

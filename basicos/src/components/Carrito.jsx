@@ -2,14 +2,18 @@ import React from 'react';
 import './carrito.css';
 import Producto from './Producto';
 
-const Carrito = ({carrito}) => (
+const Carrito = ({carrito, agregarProducto}) => (
     <div className="carrito">
         <h2>Carrito de compras</h2>
 
-        {carrito.map(producto => (
+        {carrito.length === 0
+        ?<p>Cero productos en el carrito</p>
+        : carrito.map(producto => (
             <Producto
                 key={producto.id}
-                producto={producto}
+                producto ={producto}
+                carrito={carrito}
+                agregarProducto={agregarProducto}
             />
         ))}
 
