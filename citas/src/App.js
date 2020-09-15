@@ -4,8 +4,14 @@ import Cita from './components/Cita';
 
 function App() {
 
+  //Citas en local storage
+  let citasIniciales = JSON.parse(localStorage.getItem('citas'));
+  if(!citasIniciales){
+    citasIniciales = [];
+  }
+
   //Arreglo de citas
-  const[citas, guardarCitas] = useState([]);
+  const[citas, guardarCitas] = useState(citasIniciales);
   // Funcion que tome las citas actuales y agregue la nueva
   const crearCita = cita => {
     guardarCitas([
@@ -15,7 +21,11 @@ function App() {
   };
 
   useEffect(() => {
-    
+    if(citasIniciales){
+      localStorage.setItem('citas',JSON.stringify(citas));
+    }else{
+      localStorage.setItem('citas',JSON.stringify([]));
+    }
   },[citas]);
 
   // Funcion eliminar cita
