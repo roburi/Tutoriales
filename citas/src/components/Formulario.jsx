@@ -1,4 +1,5 @@
 import React, {Fragment, useState} from 'react';
+import uuid from 'uuid';
 
 function Formulario() {
 
@@ -32,11 +33,10 @@ function Formulario() {
             return;
         
         }
-
-        console.log("ww");
-
+        actualizarError(false);
         // Asignar un ID
-
+        cita.id = uuid();
+        console.log(cita);
         // Crear la cita
 
         // Reiniciar el form
