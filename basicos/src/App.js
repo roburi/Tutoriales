@@ -29,15 +29,16 @@ function App() {
           producto ={producto}
           carrito={carrito}
           agregarProducto={agregarProducto}
-          productos={productos}
-        />
+          productos={productos}/>
+          
       ))}
       <Carrito
         carrito={carrito}
-        agregarProducto={agregarProducto}
-      />
+        agregarProducto={agregarProducto}/>
+
       <Footer 
         fecha={fecha}/>
+
     </Fragment>
   );
 }
