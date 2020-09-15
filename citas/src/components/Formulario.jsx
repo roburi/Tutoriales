@@ -11,6 +11,8 @@ function Formulario() {
         sintomas:''
     });
 
+    const [error, actualizarError] = useState(false);
+
     const actualizarState = e => {
         actualizarCita({
             ...cita,
@@ -25,8 +27,14 @@ function Formulario() {
         e.preventDefault();
 
         // Validar
+        if(mascota.trim() === '' || propietario.trim() === '' || fecha.trim() === '' || hora.trim() === '' || sintomas.trim() === ''){
+            actualizarError(true);
+            return;
         
-        
+        }
+
+        console.log("ww");
+
         // Asignar un ID
 
         // Crear la cita
@@ -37,6 +45,8 @@ function Formulario() {
     return(
         <Fragment>
             <h2>Crear Cita</h2>
+
+            {error ? <p className="alerta-error">Todos los campos son obligarios</p> : null}
             
             <form
                 onSubmit={submitCita}
