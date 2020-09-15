@@ -1,4 +1,4 @@
-import React,{Fragment, useState} from 'react';
+import React,{Fragment, useState, useEffect} from 'react';
 import Formulario from './components/Formulario';
 import Cita from './components/Cita';
 
@@ -13,6 +13,11 @@ function App() {
       cita
     ]);
   };
+
+  useEffect(() => {
+    
+  },[citas]);
+
   // Funcion eliminar cita
   const eliminarCita = id => {
 
