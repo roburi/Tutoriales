@@ -16,10 +16,10 @@ function App() {
         <div className="contenido-principal contenido">
           {mostrarpregunta 
           ? <Pregunta
-          guardarPresupuesto={guardarPresupuesto}
-          guardarRestante = {guardarRestante}
-          actualizarPregunta = {actualizarPregunta}/>
-          : null}
+              guardarPresupuesto={guardarPresupuesto}
+              guardarRestante = {guardarRestante}
+              actualizarPregunta = {actualizarPregunta}/>
+          :
           
           <div className="row">
             <div className="one-half column">
@@ -29,7 +29,7 @@ function App() {
               2
             </div>
           </div>
-
+          }
         </div>
 
       </header>
