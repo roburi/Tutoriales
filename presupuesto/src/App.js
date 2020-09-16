@@ -30,10 +30,9 @@ function App() {
 
       guardarCrearGasto(false);
     }
-  }, [gasto]);
+  }, [gasto, creargasto, gastos, restante]);
 
   const agregarNuevoGasto = gasto =>{
-    console.log(gasto);
     
   }
 
