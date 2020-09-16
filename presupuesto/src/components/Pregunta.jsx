@@ -1,11 +1,10 @@
 import React, {Fragment, useState} from 'react';
 import Error from './Error';
 
-function Pregunta({guardarPresupuesto, guardarRestante}) {
+function Pregunta({guardarPresupuesto, guardarRestante, actualizarPregunta}) {
     //States
     const [cantidad, guardarCantidad] = useState(0);
     const [error, obtenerError] = useState(false);
-
 
     const definirPresupuesto = e => {
             guardarCantidad( parseFloat(e.target.value, 10) );
@@ -25,6 +24,7 @@ function Pregunta({guardarPresupuesto, guardarRestante}) {
         obtenerError(false);
         guardarPresupuesto(cantidad);
         guardarRestante(cantidad);
+        actualizarPregunta(false);
 
 
     };

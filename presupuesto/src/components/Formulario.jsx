@@ -3,6 +3,7 @@ import React,{useState} from 'react';
 function Formulario() {
     return(
         <form>
+            {console.log("Renderizo componente Formulario")}
             <h2>Agrega tus gastos aquí</h2>
 
             <div className="campo">
