@@ -19,14 +19,12 @@ const ContenedorFormulario = styled.div`
 function App() {
   return (
     <Contenedor>
-  
       <Header
         titulo='Cotizador de Seguros'/>
   
       <ContenedorFormulario>
         <Formulario/>
       </ContenedorFormulario>
-  
     </Contenedor>
   );
 }
