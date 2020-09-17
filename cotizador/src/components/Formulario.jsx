@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import styled from '@emotion/styled';
+import {obtenerDiferenciaYear, calcularPorMarca, obtenerPlan} from '../Helper';
 
 const Campo = styled.div`
     display: flex;
@@ -44,6 +45,16 @@ const Boton = styled.button`
     }
 `;
 
+const Error = styled.div`
+    background-color: red;
+    color: white;
+    padding: 1rem;
+    width: 100%;
+    text-align: center;
+    margin: 5px;
+
+`;
+
 
 
 const Formulario = () => {
@@ -53,6 +64,8 @@ const Formulario = () => {
         year: '',
         plan: ''
     });
+
+    const [error, guardarError] = useState(false);
     // Extraer valores del state
     const {marca, year, plan} = datos;
 
@@ -63,12 +76,39 @@ const Formulario = () => {
         })
     }
 
+    const Cotizar = e => {
+        e.preventDefault();
+
+        if(marca.trim() === '' || year.trim() === '' || plan.trim() === ''){
+            guardarError(true);
+            return;
+        }
+
+        guardarError(false);
+
+        // obtener la diferencia de años
+        let diferencia = obtenerDiferenciaYear(year);
+        console.log(diferencia);
+
+        //Por cada año hay que restar el 3%
+        let resultado = 2000;
+        resultado -= ((diferencia * 3) * resultado) / 100;
+
+        //Americano 15 Europeo 30 Asiatico 5
+        resultado = calcularPorMarca(marca) * resultado;
+        resultado = obtenerPlan(plan) * resultado;
+        resultado = parseFloat(resultado).toFixed(2);
+
+    }
+
     return (  
-        <form>
+        <form onSubmit={Cotizar}>
+            {error ? <Error>Todos los campos son obligatorios</Error> : null}
+
             <Campo>
                 <Label>Marca</Label>
                 <Select name="marca" value={marca} onChange={obtenerInformacion}>
-                    <option value="">--Seleecione--</option>
+                    <option value="">Seleecione</option>
                     <option value="americano">Americano</option>
                     <option value="europeo">Europeo</option>
                     <option value="asiatico">Asiatico</option>
@@ -78,7 +118,7 @@ const Formulario = () => {
             <Campo>
                 <Label>Año</Label>
                 <Select name="year" value={year} onChange={obtenerInformacion}>
-                <option value="">--Seleccione--</option>
+                <option value="">Seleccione</option>
                     <option value="2021">2021</option>
                     <option value="2020">2020</option>
                     <option value="2019">2019</option>
@@ -108,7 +148,7 @@ const Formulario = () => {
                     onChange={obtenerInformacion}/>Completo
             </Campo>
 
-            <Boton type="button">Cotizar</Boton>
+            <Boton type="submit">Cotizar</Boton>
         </form>
     );
 }
