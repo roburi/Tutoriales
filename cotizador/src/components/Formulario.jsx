@@ -23,13 +23,34 @@ const InputRadio = styled.input`
     margin: 0 1rem;
 `;
 
+const Boton = styled.button`
+    background-color: #00838F;
+    font-size: 16px;
+    width: 100%;
+    padding: 1rem;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: none;
+    border-radius: 15px;
+
+    transition: background-color 1s ease;
+    transition: border-radius 1s ease;
+    
+    &:hover{
+        cursor: pointer;
+        background-color: #345690;
+        border-radius: 0px;
+    }
+`;
+
 const Formulario = () => {
     return (  
         <form>
             <Campo>
                 <Label>Marca</Label>
                 <Select>
-                    <option value="">Seleecione</option>
+                    <option value="">--Seleecione--</option>
                     <option value="americano">Americano</option>
                     <option value="europeo">Europeo</option>
                     <option value="asiatico">Asiatico</option>
@@ -39,7 +60,7 @@ const Formulario = () => {
             <Campo>
                 <Label>Año</Label>
                 <Select>
-                <option value="">-- Seleccione --</option>
+                <option value="">--Seleccione--</option>
                     <option value="2021">2021</option>
                     <option value="2020">2020</option>
                     <option value="2019">2019</option>
@@ -66,7 +87,7 @@ const Formulario = () => {
                     value="completo"/>Completo
             </Campo>
 
-            <button type="button">Cotizar</button>
+            <Boton type="button">Cotizar</Boton>
         </form>
     );
 }
