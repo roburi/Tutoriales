@@ -27,6 +27,7 @@ const Boton = styled.button`
 const Formulario = () => {
     //State del listado de criptomonedas
     const[listacripto, guardarCriptomonedas] = useState([]);
+    const[error, guardarError] = useState(false);
 
     //Monedas
     const MONEDAS = [
@@ -42,7 +43,7 @@ const Formulario = () => {
     const[criptomoneda, SelectCripto] = useCriptomoneda('Elige tu Criptomoneda', '', listacripto);
     // Ejecutar llamado a la api
     useEffect(() =>{
-        const consultarAPI =async () => {
+        const consultarAPI = async () => {
             const urlAPI = 'https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD';
 
             const resultado = await axios.get(urlAPI);
@@ -50,12 +51,31 @@ const Formulario = () => {
             guardarCriptomonedas(resultado.data.Data);
         }
 
+
+
         consultarAPI();
 
     }, []);
 
+
+    const cotizarMoneda = e => {
+        e.preventDefault();
+
+        if(moneda === '' || criptomoneda === ''){
+            guardarError(true);
+            return;
+        }
+
+        //Pasar los datos al componente principal
+        guardarError(false);        
+
+    };
+
     return ( 
-        <form>
+        <form onSubmit={cotizarMoneda}>
+
+            {error ? "Hay un error" : null}
+            
             <SelectMonedas />
             <SelectCripto />
             <Boton
