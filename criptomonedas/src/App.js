@@ -19,7 +19,7 @@ const Imagen = styled.img`
 `;
 
 const Heading = styled.h1`
-  font-family: 'Bebas Neve', cursive;
+  font-family: Arial, Helvetica, sans-serif;
   color: #fff;
   text-align: left;
   font-weight: 700;

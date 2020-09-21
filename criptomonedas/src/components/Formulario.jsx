@@ -43,8 +43,8 @@ const Formulario = () => {
 
             <Boton
                 type="submit"
-                value="Calcular"/>
-                
+                value="Obtener">Obtener</Boton>
+
         </form>
      );
 }
