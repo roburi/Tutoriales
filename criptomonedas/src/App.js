@@ -47,7 +47,7 @@ function App() {
         />
       </div>
       <div>
-        <Heading>Cotiza Criptomonedas</Heading>
+        <Heading>Cotizador de Criptomonedas</Heading>
         <Formulario />
       </div>
     </Contenedor>
