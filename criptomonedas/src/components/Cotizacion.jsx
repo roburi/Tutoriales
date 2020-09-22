@@ -26,7 +26,7 @@ const Cotizacion = ({resultado}) => {
         return null;
     }
 
-    return ( 
+    return(
         <ResultadoDiv>
             <Precio>El precio es: <span>{resultado.PRICE}</span></Precio>
             <Info>El precio mas alto del dia: <span>{resultado.HIGHDAY}</span></Info>
@@ -36,5 +36,5 @@ const Cotizacion = ({resultado}) => {
         </ResultadoDiv>
      );
 }
- 
+
 export default Cotizacion;
