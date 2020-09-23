@@ -1,6 +1,7 @@
 import React, {Fragment, useState, useEffect} from 'react';
 import Formulario from './components/Formulario';
 import Header from './components/Header';
+import ListadoNoticias from './components/ListadoNoticias';
 
 
 function App() {
@@ -27,7 +28,9 @@ function App() {
       <div className="container white">
         <Formulario guardarCategoria={guardarCategoria}/>
       </div>
-    
+      <div className="container white">
+        <ListadoNoticias noticias={noticias}/>
+      </div>
     </Fragment>
   );
 }
