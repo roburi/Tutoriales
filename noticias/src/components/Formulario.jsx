@@ -24,7 +24,6 @@ const Formulario = ({guardarCategoria}) => {
         guardarCategoria(categoria);
     }
 
-
     return ( 
         <div className={`${styles.buscador} row`}>
             <div className="col s12 m8 offset-m2">
@@ -40,10 +39,9 @@ const Formulario = ({guardarCategoria}) => {
                     </div>
                 
                 </form>
-
             </div>
         </div>
      );
 }
- 
+
 export default Formulario;
