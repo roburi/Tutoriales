@@ -18,8 +18,9 @@ const Formulario = ({guardarBusqueda}) => {
         guardarError(false);
 
         //Enviar el termino de busqueda hacia el componente principal
+        guardarBusqueda(termino);
     }
-
+    
     return ( 
         <form onSubmit={buscarImagenes}>
             <div className="row">
