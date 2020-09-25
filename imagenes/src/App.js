@@ -21,6 +21,8 @@ function App() {
       
       guardarImagenes(resultado.hits);
 
+      console.log(resultado.hits);
+
     }
     consultarAPI();
     
