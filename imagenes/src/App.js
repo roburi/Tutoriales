@@ -7,6 +7,8 @@ function App() {
 
   const[busqueda, guardarBusqueda] = useState('');
   const[imagenes, guardarImagenes] = useState([]);
+  const[paginaactual, guardarPaginaActual] = useState(1);
+  const[totalpaginas, guardarTotalPaginas] = useState(1);
 
   useEffect(() => {
     if(busqueda.trim === '') return;
@@ -21,14 +23,33 @@ function App() {
       
       guardarImagenes(resultado.hits);
 
-      console.log(resultado.hits);
+
+      //Calcular total de paginas
+      const calcularTotalPaginas = Math.ceil(resultado.totalHits/imagenesPorPagina);
+      guardarTotalPaginas(calcularTotalPaginas);
 
     }
     consultarAPI();
-    
-
 
   },[busqueda]);
+
+  //Definir la pagina
+  const paginaAnterior = () =>{
+    const nuevaPagina = paginaactual - 1;
+
+    if(nuevaPagina === 0){
+      return;
+    }
+    guardarPaginaActual(paginaAnterior);
+  }
+  const paginaSiguiente = () =>{
+    const nuevaPagina = paginaactual + 1;
+
+    if(nuevaPagina > totalpaginas) return;
+
+    guardarPaginaActual(nuevaPagina);
+
+  }
 
   return (
     <div className="container center">
@@ -41,7 +62,16 @@ function App() {
 
       <div className="row justify-content-center">
         <ListadoImagenes imagenes={imagenes}/>
+
       </div>
+      <button
+          type="button"
+          className="btn btn-info mr-1"
+          onClick={paginaAnterior}>&laquo; Anterior</button>
+        <button
+          type="button"
+          className="btn btn-info"
+          onClick={paginaSiguiente}>Siguiente &raquo;</button>
 
     </div>
   );
