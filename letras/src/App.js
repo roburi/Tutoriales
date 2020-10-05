@@ -8,6 +8,7 @@ function App() {
  
   const [busquedaletra, guardarBusquedaLetra] = useState({});
   const [letra, guardarLetra] = useState('');
+  const [info, guardarInfo] = useState({});
 
   useEffect(() => {
     if(Object.keys(busquedaletra).length === 0) return;
@@ -15,12 +16,17 @@ function App() {
     const consultarAPIletra = async () => {
       const {artista, cancion} = busquedaletra;
 
-      const url = `https://api.lyrics.ovh/v1/${artista}/${cancion}`;
+      const urletra = `https://api.lyrics.ovh/v1/${artista}/${cancion}`;
+      const urlartista = `https://www.theaudiodb.com/api/v1/json/1/search.php?s=${artista}`
 
-      const resultado = await axios(url);
-      guardarLetra(resultado.data.lyrics);
+      const [letra, informacion] = await Promise.all([
+        axios(urletra),
+        axios(urlartista)
+      ]);
 
-      console.log(resultado)
+      guardarLetra(letra.data.lyrics);
+      guardarInfo(informacion.data.artist[0]);
+      
     }
 
     consultarAPIletra();
