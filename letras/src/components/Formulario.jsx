@@ -1,11 +1,42 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 const Formulario = () => {
+
+    const[busqueda, guardarBusqueda] = useState({
+        artista:'',
+        cancion:''
+    });
+
+    const[error, guardarError] = useState(false);
+
+    const {artista, cancion} = busqueda;
+
+    //Funcion a cada input
+    const actualizarState = e => {
+        guardarBusqueda({
+            ...busqueda,
+            [e.target.name] : e.target.value
+        });
+    };
+
+    const buscarInformacion = e =>{
+        e.preventDefault();
+
+        if(artista.trim() === '' || cancion.trim() === ''){
+            guardarError(true);
+        }
+        guardarError(false);
+
+        
+    };
+
     return ( 
         <div className="bg-info">
             <div className="container">
                 <div className="row">
-                    <form className="col card text-white bg-transparent mb-5 pt-5 pb-2">
+                    <form
+                        onSubmit={buscarInformacion} 
+                        className="col card text-white bg-transparent mb-5 pt-5 pb-2">
                         <fieldset>
                             <legend className="text-center">Buscador Letras</legend>
                             <div className="row">
@@ -16,7 +47,9 @@ const Formulario = () => {
                                             type="text"
                                             className="form-control"
                                             name="artista"
-                                            placeholder="Nombre.."/>
+                                            placeholder="Nombre.."
+                                            onChange={guardarBusqueda}
+                                            value={artista}/>
                                     </div>
                                 </div>
                                 <div className="col-md-6">
@@ -26,7 +59,9 @@ const Formulario = () => {
                                             type="text"
                                             className="form-control"
                                             name="cancion"
-                                            placeholder="Nombre.."/>
+                                            placeholder="Nombre.."
+                                            onChange={guardarBusqueda}
+                                            value={cancion}/>
                                     </div>
                                 </div>
                             </div>
