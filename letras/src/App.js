@@ -18,14 +18,13 @@ function App() {
       const {artista, cancion} = busquedaletra;
       const urletra = `https://api.lyrics.ovh/v1/${artista}/${cancion}`;
       const urlartista = `https://www.theaudiodb.com/api/v1/json/1/search.php?s=${artista}`
-
+      
       const [letra, info] = await Promise.all([
         axios(urletra),
         axios(urlartista)
       ]);
       
       guardarLetra(letra.data.lyrics);
-      console.log(letra.data.lyrics);
       guardarInfo(info.data.artists[0]);
       
     }
@@ -42,17 +41,16 @@ function App() {
         <div className="row">
           <div className="col-md-6">
             <Info
-              info={info}
-            />
+              info={info}/>
+
           </div>
           <div className="col-md-6">
-          <Cancion
-            letra={letra}
-          />
+            <Cancion
+              letra={letra}/>
+
           </div>
         </div>
       </div>
-
     </Fragment>
   );
 }
