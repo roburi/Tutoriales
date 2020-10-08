@@ -4,8 +4,7 @@ import {CategoriasContext} from '../context/CategoriasContext';
 
 const Formulario = () => {
 
-    const {hola} = useContext(CategoriasContext);
-
+    
     return ( 
         <form className="col-12">
             <fieldset className="text-center">

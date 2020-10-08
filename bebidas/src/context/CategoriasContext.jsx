@@ -1,4 +1,4 @@
-import React, {createContext, useState} from 'react';
+import React, {createContext, useState, useEffect} from 'react';
 
 //Crear context
 
@@ -7,11 +7,15 @@ export const CategoriasContext = createContext();
 //Provider es donde se encuentran las funciones y state
 
 const CategoriasProvider = (props) => {
-    const[hola, guardarHola] = useState('Hola');
+    
+    const[categoria, guardarCategoria] = useState({});
+
+    useEffect(() => {
+        
+    }, []);
 
     return(
-        <CategoriasContext.Provider
-            value={{hola}}>
+        <CategoriasContext.Provider>
             {props.children}
         </CategoriasContext.Provider>
     );
