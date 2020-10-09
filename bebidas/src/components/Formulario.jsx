@@ -1,9 +1,11 @@
 
-import React, {useContext} from 'react';
-import {CategoriasContext} from '../context/CategoriasContext';
+import React, { useContext } from 'react';
+import { CategoriasContext } from '../context/CategoriasContext';
 
 const Formulario = () => {
 
+    const { categorias } = useContext(CategoriasContext);
+    console.log(categorias);
     
     return ( 
         <form className="col-12">
@@ -19,10 +21,13 @@ const Formulario = () => {
                         placeholder="Buscar por ingrediente"/>
                 </div>
                 <div className="col-md-4">
-                    <select 
-                        className="form-control"
-                        name="categoria">
-                        <option value="">Seleccione categoria</option>
+                    <select className="form-control" name="categoriaa">
+                        <option value="">Seleccione una Categoría</option>
+                        
+                        {/* {categoria.map(categorias =>(
+                            <option key={categorias.strCategory} value={categorias.strCategory}>{categorias.strCategory}</option>
+                        ))} */}
+
                     </select>
                 </div>
                 <div className="col-md-4">
