@@ -9,7 +9,7 @@ export const CategoriasContext = createContext();
 
 const CategoriasProvider = (props) => {
     
-    const[categoria, guardarCategoria] = useState({});
+    const[categorias, guardarCategoria] = useState({});
 
     useEffect(() => {
         const obtenerCategorias = async () =>{
@@ -26,7 +26,7 @@ const CategoriasProvider = (props) => {
 
     return(
         <CategoriasContext.Provider
-            value={{categoria}}>
+            value={{categorias}}>
             {props.children}
         </CategoriasContext.Provider>
     );
