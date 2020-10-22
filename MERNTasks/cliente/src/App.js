@@ -7,16 +7,19 @@ import Proyectos from './components/proyectos/Proyectos';
 
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
+import Proyectostate from './context/proyectos/proyectoState';
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/" component={Login} />
-        <Route exact path="/nueva-cuenta" component={NuevaCuenta} />
-        <Route exact path="/proyectos" component={Proyectos} />
-      </Switch>
-    </Router>
+    <Proyectostate>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Login} />
+          <Route exact path="/nueva-cuenta" component={NuevaCuenta} />
+          <Route exact path="/proyectos" component={Proyectos} />
+        </Switch>
+      </Router>
+    </Proyectostate>
   );
 }
 
